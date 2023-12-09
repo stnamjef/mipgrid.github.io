@@ -1,7 +1,348 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<html lang="en">
+<head>
+	<title>Mip-Grid</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<style>
+		html,
+		body,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-family: "Titillium Web", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		}
+
+		/* < !-- .cite {
+			background: #f0f0f0;
+			padding: 10px;
+			font-size: 18px
+		}
+
+		-->.cite {
+			padding: 0px;
+			background: #ffffff;
+			font-size: 18px
+		} */
+
+		.card {
+			border: 1px solid #ccc
+		}
+
+		img {
+			margin-bottom: -6px;
+		}
+
+		p {
+			font-size: 18px;
+		}
+
+		a {
+			text-decoration: none;
+			color: #2196F3;
+		}
+		
+		.bibtexsection {
+			width: 100%;
+			height: 12em;
+			font-family: "Courier", monospace;
+			/* font-size: 1vw; */
+			white-space: pre;
+			background-color: #f4f4f4;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: left;
+		}
+
+		.layered-paper-big {
+			/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+			box-shadow:
+				0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The top layer shadow */
+				5px 5px 0 0px #fff,
+				/* The second layer */
+				5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The second layer shadow */
+				10px 10px 0 0px #fff,
+				/* The third layer */
+				10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The third layer shadow */
+				15px 15px 0 0px #fff,
+				/* The fourth layer */
+				15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The fourth layer shadow */
+				20px 20px 0 0px #fff,
+				/* The fifth layer */
+				20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The fifth layer shadow */
+				25px 25px 0 0px #fff,
+				/* The fifth layer */
+				25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+			/* The fifth layer shadow */
+			margin-left: 10px;
+			margin-right: 60px;
+		}
+
+		table {
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			border-collapse: collapse;
+		}
+
+		table> :is(thead, tbody)>tr> :is(th, td) {
+			padding: 3px;
+			text-align: center;
+		}
+
+		table>thead>tr> :is(th, td) {
+			border-top: 2px solid;
+			border-bottom: 1px solid;
+		}
+
+		table>tbody>tr:last-child> :is(th, td) {
+			border-bottom: 2px solid;
+		}
+
+		table>tbody {
+			border-top: 2px solid;
+			border-bottom: 1px solid;
+		}
+	</style>
+</head>
+
+<body class="w3-white">
+	<!-- Page Container -->
+	<div class="w3-content w3-margin-top w3-margin-bottom" style="max-width:960px;">
+
+		<!-- The Grid -->
+		<div class="w3-row-padding">
+
+			<!-- paper container -->
+			<div class="w3-display-container w3-row w3-white w3-margin-bottom">
+				<div class="w3-center">
+					<h1><strong>Mip-Grid: Anti-aliased Grid Representations</strong></h1> 
+					<h1><strong>for Neural Radiance Fields</strong></h1>
+					<h2 style="color: gray" >NeurIPS 2023</h2>
+					<h5>Seungtae Nam<sup>1</sup>, Daniel Rho<sup>2</sup>, Jong Hwan Ko<sup>1,3</sup>, Eunbyung Park<sup>1,3*</sup></h5>
+					<h5><sup>1</sup>Department of Artificial Intelligence, Sungkyunkwan University</h5>
+                    <h5><sup>2</sup>AI2XL, KT</h5>
+                    <h5><sup>3</sup>Department of Electrical and Computer Engineering, Sungkyunkwan University</h5>
+					<h5><sup>*</sup>Corresponding author</h5>
+				</div>
+
+				<div class="w3-center">
+					<h3>[<a href="https://github.com/stnamjef/MipGrid">Code</a>] &emsp; [<a href="https://openreview.net/forum?id=BW6nZf7TnK">Paper</a>] &emsp; [<a href="img/poster.pdf">Poster</a>]</h3>
+				</div>
+
+				<hr>
+				<div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
+					<img src="img/architecture_overview.png" style="width:100%">
+				</div>
+				
+				<hr>
+				<div class="w3-center">
+					<h2><strong>Abstract</strong></h2>
+				</div>
+				<p align="justify">Despite the remarkable achievements of neural radiance fields (NeRF) in representing 3D scenes and generating novel view images, the aliasing issue, rendering “jaggies" or “blurry" images at varying camera distances, remains unresolved in most existing approaches. 
+                    Mip-NeRF has addressed this challenge by rendering conical frustums instead of rays. 
+                    However, it relies on MLP architecture to represent the radiance fields, missing out on the fast training speed offered by the latest grid-based methods. 
+                    In this work, we present mip-Grid, a novel approach that integrates anti-aliasing techniques into grid-based representations for radiance fields, mitigating the aliasing artifacts while enjoying fast training time. 
+                    The proposed method generates multiple grids by applying simple convolution operations over a single-scale shared grid representation and uses the scale-aware coordinate to retrieve features at different scales from the generated multiple grids. 
+                    To test the effectiveness, we integrated the proposed method into the two recent representative grid-based methods, TensoRF and K-Planes. 
+                    Experimental results show that mip-Grid greatly improves the rendering performance of both methods and even outperforms mip-NeRF on multi-scale datasets while achieving significantly faster training time.
+                </p>
+				<hr>
+				
+
+				<div class="w3-center">
+					<h2><strong>Generated Multi-scale Grids and Learned Kernels</strong></h2>
+				</div>
+				<div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
+                    <img src="img/grid_visualization.png" style="width:100%">
+					<!-- <p align="center">With our proposed method, most wavelet coefficients (more than 95%) can be zeroed out.</p> -->
+				</div>
+
+				<!-- <hr>
+				<div class="w3-center">
+					<h2><strong>Demo</strong></h2>
+				</div>
+				<p><strong>NeRF Synthetic Dataset - Lego</strong></p>
+				<div align="center" style="margin-bottom: 52px;"> 
+					<img-comparison-slider hover="hover" tabindex="0" class="rendered">
+					<figure slot="first" class="before"> 
+						<img id="left_img_NeRF_Lego" src="https://huggingface.co/stnamjef/MipGrid/resolve/main/images/lego/original_d0/000.png" style="min-width: 800px;">
+						<figcaption id="left_caption_NeRF_Lego" style="text-align:left;"> 
+							<b>TensoRF</b>
+							<br>PSNR: 30.35
+						</figcaption>
+					</figure>
+					<figure slot="second" class="after"> 
+						<img type="image/png" id="right_img_NeRF_Lego" src="https://huggingface.co/stnamjef/MipGrid/resolve/main/images/lego/mipgrid_d0/000.png" style="min-width: 800px;">
+						<figcaption id="right_caption_NeRF_Lego" style="text-align:right;"> 
+							<b>Mip-TensoRF</b>
+							<br>PSNR: 36.07 
+						</figcaption>
+					</figure>
+				</img-comparison-slider>
+				<div class="table-wrapper">
+					<table width="100%">
+						<tbody>
+							<tr>
+								<td align="center"> Left Model</td>
+								<td align="center"> Frame</td>
+								<td align="center"> Right Model</td>
+							</tr>
+							<tr>
+								<td align="center"> 
+									<select id="left_select_NeRF_Lego" onchange="select_model(this, 'left', 'lego')"> 
+										<option selected="selected" value="original_d0">TensoRF (800)</option>
+										<option value="original_d1">TensoRF (400)</option>
+										<option value="original_d2">TensoRF (200)</option>
+										<option value="original_d3">TensoRF (100)</option>
+									</select></td><td align="center"> 
+										<input id="input_NeRF_Lego" type="range" min="0" max="199" value="0" onchange="select_frame(this, 'lego')">
+									</td>
+								<td align="center"> 
+									<select id="right_select_NeRF_Lego" onchange="select_model(this, 'right', 'lego')"> 
+										<option selected="selected" value="original_d0">MipGrid (800)</option>
+										<option value="original_d1">MipGrid (400)</option>
+										<option value="original_d2">MipGrid (200)</option>
+										<option value="original_d3">MipGrid (100)</option>
+									</select>
+									<input id="input_NeRF_Lego" type="range" min="0" max="199" value="0" onchange="select_frame(this, 'lego')">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div> -->
+
+				<hr>
+				<div class="w3-center">
+					<h2><strong>Qualitative Comparison on the Lego scene</strong></h2>
+				</div>
+				<div align="center" style="margin-bottom: 52px;"> 
+					<img-comparison-slider hover="hover" tabindex="0" class="rendered">
+					<figure slot="first" class="before"> 
+						<img id="left_img_lego" src="https://huggingface.co/stnamjef/MipGrid/resolve/main/images/lego/original_d3/000.png" style="min-width: 800px;">
+						<figcaption id="left_caption_lego" style="text-align:left;"> 
+							<b>TensoRF</b>
+							<!-- <br>PSNR: 36.04 -->
+						</figcaption>
+					</figure>
+					<figure slot="second" class="after"> 
+						<img type="image/png" id="right_img_lego" src="https://huggingface.co/stnamjef/MipGrid/resolve/main/images/lego/mipgrid_d3/000.png" style="min-width: 800px;">
+						<figcaption id="right_caption_lego" style="text-align:right;"> 
+							<b>MipGrid</b>
+							<!-- <br>PSNR: 35.33 -->
+						</figcaption>
+					</figure>
+				</img-comparison-slider>
+				<div class="table-wrapper">
+					<table width="100%">
+						<tbody>
+							<tr>
+								<td align="center"> Left Model</td>
+								<td align="center"> Frame</td>
+								<td align="center"> Right Model</td>
+							</tr>
+							<tr>
+								<td align="center"> 
+									<select id="left_select_lego" onchange="select_model(this, 'left', 'lego')"> 
+										<option value="original_d0">TensoRF (800)</option>
+										<option value="original_d1">TensoRF (400)</option>
+										<option value="original_d2">TensoRF (200)</option>
+										<option selected="selected" value="original_d3">TensoRF (100)</option>
+										<option value="mipgrid_d0">MipGrid (800)</option>
+										<option value="mipgrid_d1">MipGrid (400)</option>
+										<option value="mipgrid_d2">MipGrid (200)</option>
+										<option value="mipgrid_d3">MipGrid (100)</option>
+									</select>
+								</td>
+									<td align="center"> 
+										<input id="input_lego" type="range" min="0" max="199" value="0" onchange="select_frame(this, 'lego')">
+									</td>
+									<td align="center"> 
+										<select id="right_select_lego" onchange="select_model(this, 'right', 'lego')"> 
+											<option value="original_d0">TensoR (800)</option>
+											<option value="original_d1">TensoRF (400)</option>
+											<option value="original_d2">TensoRF (200)</option>
+											<option value="original_d3">TensoRF (100)</option>
+											<option value="mipgrid_d0">MipGrid (800)</option>
+											<option value="mipgrid_d1">MipGrid (400)</option>
+											<option value="mipgrid_d2">MipGrid (200)</option>
+											<option selected="selected" value="mipgrid_d3">MipGrid (100)</option>
+										</select>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+				<hr>
+                <div class="w3-center">
+					<h2><strong>Demo Video</strong></h2>
+				</div>
+                <video controls style="width:100%" autoplay loop playsinline muted>
+					<source src="video/chair.mp4" type="video/mp4">
+					Sorry, your browser doesn't support embedded videos.
+				</video>
+                <video controls style="width:100%" autoplay loop playsinline muted>
+					<source src="video/lego.mp4" type="video/mp4">
+					Sorry, your browser doesn't support embedded videos.
+				</video>
+                <video controls style="width:100%" autoplay loop playsinline muted>
+					<source src="video/materials.mp4" type="video/mp4">
+					Sorry, your browser doesn't support embedded videos.
+				</video>
+                <video controls style="width:100%" autoplay loop playsinline muted>
+					<source src="video/mic.mp4" type="video/mp4">
+					Sorry, your browser doesn't support embedded videos.
+				</video>
+				
+				<!-- <hr>
+				<div class="w3-center">
+					<h2>Bibtex</h2>
+				</div>
+				<textarea class="bibtexsection" readonly>
+@InProceedings{Rho_2023_CVPR,
+    author    = {Rho, Daniel and Lee, Byeonghyeon and Nam, Seungtae and Lee, Joo Chan and Ko, Jong Hwan and Park, Eunbyung},
+    title     = {Masked Wavelet Representation for Compact Neural Radiance Fields},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2023},
+    pages     = {20680-20690}
+}</textarea> -->
+
+				<hr>
+				<div class="w3-center">
+					<p class="text-justify">
+						We used the project page of <a href="https://leonidk.github.io/fuzzy-metaballs/">Fuzzy Metaballs</a> as a template.
+					</p>
+				</div>
+			</div>
+			<!-- end paper container -->
+
+		</div><!-- End Grid -->
+	</div><!-- End Page Container -->
+
 </body>
+<script
+defer
+src="https://unpkg.com/img-comparison-slider@7/dist/index.js"
+></script>
+<script type="text/javascript" src="js/main.js"></script> 
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/img-comparison-slider@7/dist/styles.css"
+/>
+
 </html>
