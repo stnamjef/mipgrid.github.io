@@ -165,63 +165,7 @@
 				</div>
 				<div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
                     <img src="img/grid_visualization.png" style="width:100%">
-					<!-- <p align="center">With our proposed method, most wavelet coefficients (more than 95%) can be zeroed out.</p> -->
 				</div>
-
-				<!-- <hr>
-				<div class="w3-center">
-					<h2><strong>Demo</strong></h2>
-				</div>
-				<p><strong>NeRF Synthetic Dataset - Lego</strong></p>
-				<div align="center" style="margin-bottom: 52px;"> 
-					<img-comparison-slider hover="hover" tabindex="0" class="rendered">
-					<figure slot="first" class="before"> 
-						<img id="left_img_NeRF_Lego" src="https://huggingface.co/stnamjef/MipGrid/resolve/main/images/lego/original_d0/000.png" style="min-width: 800px;">
-						<figcaption id="left_caption_NeRF_Lego" style="text-align:left;"> 
-							<b>TensoRF</b>
-							<br>PSNR: 30.35
-						</figcaption>
-					</figure>
-					<figure slot="second" class="after"> 
-						<img type="image/png" id="right_img_NeRF_Lego" src="https://huggingface.co/stnamjef/MipGrid/resolve/main/images/lego/mipgrid_d0/000.png" style="min-width: 800px;">
-						<figcaption id="right_caption_NeRF_Lego" style="text-align:right;"> 
-							<b>Mip-TensoRF</b>
-							<br>PSNR: 36.07 
-						</figcaption>
-					</figure>
-				</img-comparison-slider>
-				<div class="table-wrapper">
-					<table width="100%">
-						<tbody>
-							<tr>
-								<td align="center"> Left Model</td>
-								<td align="center"> Frame</td>
-								<td align="center"> Right Model</td>
-							</tr>
-							<tr>
-								<td align="center"> 
-									<select id="left_select_NeRF_Lego" onchange="select_model(this, 'left', 'lego')"> 
-										<option selected="selected" value="original_d0">TensoRF (800)</option>
-										<option value="original_d1">TensoRF (400)</option>
-										<option value="original_d2">TensoRF (200)</option>
-										<option value="original_d3">TensoRF (100)</option>
-									</select></td><td align="center"> 
-										<input id="input_NeRF_Lego" type="range" min="0" max="199" value="0" onchange="select_frame(this, 'lego')">
-									</td>
-								<td align="center"> 
-									<select id="right_select_NeRF_Lego" onchange="select_model(this, 'right', 'lego')"> 
-										<option selected="selected" value="original_d0">MipGrid (800)</option>
-										<option value="original_d1">MipGrid (400)</option>
-										<option value="original_d2">MipGrid (200)</option>
-										<option value="original_d3">MipGrid (100)</option>
-									</select>
-									<input id="input_NeRF_Lego" type="range" min="0" max="199" value="0" onchange="select_frame(this, 'lego')">
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div> -->
 
 				<hr>
 				<div class="w3-center">
@@ -239,7 +183,7 @@
 					<figure slot="second" class="after"> 
 						<img type="image/png" id="right_img_lego" src="https://huggingface.co/stnamjef/MipGrid/resolve/main/images/lego/mipgrid_d3/000.png" style="min-width: 800px;">
 						<figcaption id="right_caption_lego" style="text-align:right;"> 
-							<b>MipGrid</b>
+							<b>MipTensoRF</b>
 							<!-- <br>PSNR: 35.33 -->
 						</figcaption>
 					</figure>
@@ -259,10 +203,10 @@
 										<option value="original_d1">TensoRF (400)</option>
 										<option value="original_d2">TensoRF (200)</option>
 										<option selected="selected" value="original_d3">TensoRF (100)</option>
-										<option value="mipgrid_d0">MipGrid (800)</option>
-										<option value="mipgrid_d1">MipGrid (400)</option>
-										<option value="mipgrid_d2">MipGrid (200)</option>
-										<option value="mipgrid_d3">MipGrid (100)</option>
+										<option value="mipgrid_d0">MipTensoRF (800)</option>
+										<option value="mipgrid_d1">MipTensoRF (400)</option>
+										<option value="mipgrid_d2">MipTensoRF (200)</option>
+										<option value="mipgrid_d3">MipTensoRF (100)</option>
 									</select>
 								</td>
 									<td align="center"> 
@@ -274,10 +218,10 @@
 											<option value="original_d1">TensoRF (400)</option>
 											<option value="original_d2">TensoRF (200)</option>
 											<option value="original_d3">TensoRF (100)</option>
-											<option value="mipgrid_d0">MipGrid (800)</option>
-											<option value="mipgrid_d1">MipGrid (400)</option>
-											<option value="mipgrid_d2">MipGrid (200)</option>
-											<option selected="selected" value="mipgrid_d3">MipGrid (100)</option>
+											<option value="mipgrid_d0">MipTensoRF (800)</option>
+											<option value="mipgrid_d1">MipTensoRF (400)</option>
+											<option value="mipgrid_d2">MipTensoRF (200)</option>
+											<option selected="selected" value="mipgrid_d3">MipTensoRF (100)</option>
 										</select>
 									</td>
 								</tr>
